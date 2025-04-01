@@ -1,0 +1,605 @@
+{
+    "response_code": 0,
+    "results": [
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "Macintosh has named six of its operating systems after big cats. What big cat did Macintosh name their 2007 release after?",
+            "correct_answer": "Leopard",
+            "incorrect_answers": [
+                "Tiger",
+                "Panther",
+                "Puma"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "Computer manufacturer Compaq was acquired for $25 billion dollars in 2002 by which company?",
+            "correct_answer": "Hewlett-Packard",
+            "incorrect_answers": [
+                "Toshiba",
+                "Asus",
+                "Dell"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "Which of the General Mills Corporation's monster cereals was the last to be released in the 1970's?",
+            "correct_answer": "Fruit Brute",
+            "incorrect_answers": [
+                "Count Chocula",
+                "Franken Berry",
+                "Boo-Berry"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "What year was Apple Inc. founded?",
+            "correct_answer": "1976",
+            "incorrect_answers": [
+                "1978",
+                "1980",
+                "1974"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "On average, Americans consume 100 pounds of what per second?",
+            "correct_answer": "Chocolate",
+            "incorrect_answers": [
+                "Potatoes",
+                "Donuts",
+                "Cocaine"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "Which country drives on the left side of the road?",
+            "correct_answer": "Japan",
+            "incorrect_answers": [
+                "Germany",
+                "Russia",
+                "China"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "The early part of which decade, did the Goth Subculture begin?",
+            "correct_answer": "1980s",
+            "incorrect_answers": [
+                "1990s",
+                "2000s",
+                "1970s"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "Which iconic Disneyland attraction was closed in 2017 to be remodeled as a \"Guardians of the Galaxy\" themed ride?",
+            "correct_answer": "Twilight Zone Tower of Terror",
+            "incorrect_answers": [
+                "The Haunted Mansion",
+                "Pirates of the Caribbean",
+                "Peter Pan's Flight"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "When did the website \"Facebook\" launch?",
+            "correct_answer": "2004",
+            "incorrect_answers": [
+                "2005",
+                "2003",
+                "2006"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "Directly between the Washington Monument and the Reflecting Pool is a memorial to which war?",
+            "correct_answer": "World War II",
+            "incorrect_answers": [
+                "Vietnam War",
+                "American Civil War",
+                "American Revolutionary War"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "What is a dead mall?",
+            "correct_answer": "A mall with high vacancy rates or low consumer foot traffic",
+            "incorrect_answers": [
+                "A mall with no stores",
+                "A mall that has been condemed",
+                "A mall after business hours"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "In 2013 how much money was lost by Nigerian scams?",
+            "correct_answer": "$12.7 Billion",
+            "incorrect_answers": [
+                "$95 Million",
+                "$956 Million",
+                "$2.7 Billion"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "What is the unit of currency in Laos?",
+            "correct_answer": "Kip",
+            "incorrect_answers": [
+                "Ruble",
+                "Konra",
+                "Dollar"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "What is the full title of the Prime Minister of the UK?",
+            "correct_answer": "First Lord of the Treasury",
+            "incorrect_answers": [
+                "Duke of Cambridge",
+                "Her Majesty's Loyal Opposition",
+                "Manager of the Crown Estate"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "Which of these companies does NOT manufacture automobiles?",
+            "correct_answer": "Ducati",
+            "incorrect_answers": [
+                "Nissan",
+                "GMC",
+                "Fiat"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "Who is the founder of \"The Lego Group\"?",
+            "correct_answer": "Ole Kirk Christiansen",
+            "incorrect_answers": [
+                "Jens Niels Christiansen",
+                "Kirstine Christiansen",
+                "Gerhardt Kirk Christiansen"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "Which of the following buildings is example of a structure primarily built in the Art Deco architectural style?",
+            "correct_answer": "Niagara Mohawk Building",
+            "incorrect_answers": [
+                "Taipei 101",
+                "One Detroit Center",
+                "Westendstrasse 1"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "Who is a co-founder of music streaming service Spotify?",
+            "correct_answer": "Daniel Ek",
+            "incorrect_answers": [
+                "Sean Parker",
+                "Felix Miller",
+                "Michael Breidenbruecker"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "What is the name given to Indian food cooked over charcoal in a clay oven?",
+            "correct_answer": "Tandoori",
+            "incorrect_answers": [
+                "Biryani",
+                "Pani puri",
+                "Tiki masala"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "What is the star sign of someone born on Valentines day?",
+            "correct_answer": "Aquarius",
+            "incorrect_answers": [
+                "Pisces",
+                "Capricorn",
+                "Scorpio"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "The lesser-known continuation of the saying \"Curiosity killed the cat...\" is:",
+            "correct_answer": "\"...but satisfaction brought it back.\"",
+            "incorrect_answers": [
+                "\"...and the silent mouse remained thereat.\"",
+                "\"...which taught it not to do that.\"",
+                "\"...but death by the truth is better than ignorance.\""
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "Which essential condiment is also known as Japanese horseradish?",
+            "correct_answer": "Wasabi",
+            "incorrect_answers": [
+                "Mentsuyu",
+                "Karashi",
+                "Ponzu"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "Which of the following Ivy League universities has its official motto in Hebrew as well as in Latin?",
+            "correct_answer": "Yale University",
+            "incorrect_answers": [
+                "Princeton University",
+                "Harvard University",
+                "Columbia University"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "What is the highest number of Michelin stars a restaurant can receive?",
+            "correct_answer": "Three",
+            "incorrect_answers": [
+                "Four",
+                "Five",
+                "Six"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "Bob and Mike Bryan were well known brothers in which sport?",
+            "correct_answer": "Tennis",
+            "incorrect_answers": [
+                "Basketball",
+                "Football",
+                "Baseball"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "What character was once considered to be the 27th letter of the alphabet?",
+            "correct_answer": "Ampersand",
+            "incorrect_answers": [
+                "Interrobang",
+                "Tilde",
+                "Pilcrow"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "When was Hubba Bubba first introduced?",
+            "correct_answer": "1979",
+            "incorrect_answers": [
+                "1984",
+                "1972",
+                "1980"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "Which Italian automobile manufacturer gained majority control of U.S. automobile manufacturer Chrysler in 2011?",
+            "correct_answer": "Fiat",
+            "incorrect_answers": [
+                "Maserati",
+                "Alfa Romeo",
+                "Ferrari"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "Amsterdam Centraal station is twinned with what station?",
+            "correct_answer": "London Liverpool Street",
+            "incorrect_answers": [
+                "Frankfurt (Main) Hauptbahnhof",
+                "Paris Gare du Nord",
+                "Brussels Midi"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "In the Morse code, which letter is indicated by 3 dots?",
+            "correct_answer": "S",
+            "incorrect_answers": [
+                "O",
+                "A",
+                "C"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "What is the Italian word for \"tomato\"?",
+            "correct_answer": "Pomodoro",
+            "incorrect_answers": [
+                "Aglio",
+                "Cipolla",
+                "Peperoncino"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "What is the average life span of a garden ant?",
+            "correct_answer": "15 years",
+            "incorrect_answers": [
+                "24 hours",
+                "1 week",
+                "3 years"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "Which is the most popular spoken language in the Southern Hemisphere?",
+            "correct_answer": "Portuguese",
+            "incorrect_answers": [
+                "English",
+                "Spanish",
+                "French"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "What is the romanized Russian word for \"winter\"?",
+            "correct_answer": "Zima",
+            "incorrect_answers": [
+                "Leto",
+                "Vesna",
+                "Osen'"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "Which language is NOT Indo-European?",
+            "correct_answer": "Hungarian",
+            "incorrect_answers": [
+                "Russian",
+                "Greek",
+                "Latvian"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "When was the Declaration of Independence approved by the Second Continental Congress?",
+            "correct_answer": "July 4, 1776",
+            "incorrect_answers": [
+                "May 4, 1776",
+                "June 4, 1776",
+                "July 2, 1776"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "Which country has the most Trappist breweries?",
+            "correct_answer": "Belgium",
+            "incorrect_answers": [
+                "Netherlands",
+                "France",
+                "USA"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "This field is sometimes known as The Dismal Science.",
+            "correct_answer": "Economics",
+            "incorrect_answers": [
+                "Philosophy",
+                "Politics",
+                "Physics"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "What did the Spanish autonomous community of Catalonia ban in 2010, that took effect in 2012?",
+            "correct_answer": "Bullfighting",
+            "incorrect_answers": [
+                "Fiestas",
+                "Flamenco",
+                "Mariachi"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "Which of these is the name of a Japanese system of alternative medicine, literally meaning \"finger pressure\"?",
+            "correct_answer": "Shiatsu",
+            "incorrect_answers": [
+                "Ukiyo",
+                "Majime",
+                "Ikigai"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "The architect known as Le Corbusier was an important figure in what style of architecture?",
+            "correct_answer": "Modernism",
+            "incorrect_answers": [
+                "Neoclassical",
+                "Baroque",
+                "Gothic Revival"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "What is real haggis made of?",
+            "correct_answer": "Sheep's Heart, Liver and Lungs",
+            "incorrect_answers": [
+                "Sheep's Heart, Kidneys and Lungs",
+                "Sheep's Liver, Kidneys and Eyes",
+                "Whole Sheep"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "What is the world's most expensive spice by weight?",
+            "correct_answer": "Saffron",
+            "incorrect_answers": [
+                "Cinnamon",
+                "Cardamom",
+                "Vanilla"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "Linus Pauling, one of the only winners of multiple Nobel Prizes, earned his Nobel Prizes in Chemistry and what?",
+            "correct_answer": "Peace",
+            "incorrect_answers": [
+                "Physics",
+                "Economics",
+                "Physiology/Medicine"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "What is the defining characteristic of someone who is described as hirsute?",
+            "correct_answer": "Hairy",
+            "incorrect_answers": [
+                "Rude",
+                "Funny",
+                "Tall"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "What direction does the Statue of Liberty face?",
+            "correct_answer": "Southeast",
+            "incorrect_answers": [
+                "Southwest",
+                "Northwest",
+                "Northeast"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "What was the destination of the missing flight MH370?",
+            "correct_answer": "Beijing",
+            "incorrect_answers": [
+                "Kuala Lumpur",
+                "Singapore",
+                "Tokyo"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "The website \"Shut Up and Sit Down\" reviews which form of media?",
+            "correct_answer": "Board Games",
+            "incorrect_answers": [
+                "Television Shows",
+                "Video Games",
+                "Films"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "What was the name given to Japanese military dictators who ruled the country through the 12th and 19th Century?",
+            "correct_answer": "Shogun",
+            "incorrect_answers": [
+                "Ninja",
+                "Samurai",
+                "Shinobi"
+            ]
+        },
+        {
+            "type": "multiple",
+            "difficulty": "medium",
+            "category": "General Knowledge",
+            "question": "What does a milliner make and sell?",
+            "correct_answer": "Hats",
+            "incorrect_answers": [
+                "Shoes",
+                "Belts",
+                "Shirts"
+            ]
+        }
+    ]
+}

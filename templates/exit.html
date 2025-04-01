@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Game Over - KBC++</title>
+  <style>
+    body {
+      background-color: #001f3f;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      text-align: center;
+      padding: 20px;
+      background-color: #012a4a;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #00bfff;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .logout-button {
+      font-size: 20px;
+      padding: 10px 20px;
+      background-color: red;
+      border: none;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .logout-button:hover {
+      background-color: #ff4d4d;
+      box-shadow: 0 0 10px #ff4d4d;
+    }
+    .btn-primary {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+      <h1>Game Over</h1>
+      {% if reason == 'voluntary' %}
+          <h2>Thank you for playing!</h2>
+          <p>You've chosen to walk away with your winnings.</p>
+      {% elif reason == 'wrong_answer' %}
+          <h2>Oops! Wrong Answer!</h2>
+          <p>You selected: <span style="color: red;">{{ wrong_answer }}</span></p>
+          <p>The correct answer was: <span style="color: green;">{{ correct_answer }}</span></p>
+      {% elif is_crorepati %}
+          <h2>🎉 Congratulations! You are a CROREPATI! 🎉</h2>
+          <p>You've answered all 15 questions correctly and won the grand prize!</p>
+      {% else %}
+          <h2>Game Over</h2>
+          <p>Thank you for playing!</p>
+      {% endif %}
+      
+      <h3>Your Total Earnings: ₹<span id="earnings">{{ earnings }}</span></h3>
+      <p>You answered {{ correct_answers }} question(s) correctly.</p>
+      
+      <form action="{{ url_for('index') }}" method="GET">
+          <button type="submit" class="logout-button">Play again</button>
+      </form>
+  </div>
+
+  <script>
+    // Ensure earnings is displayed correctly
+    let sanitizedEarnings = JSON.parse('{{ earnings | tojson | safe }}');
+    // Sanitize the earnings value to prevent XSS
+    function sanitize(input) {
+      const div = document.createElement('div');
+      div.textContent = input;
+      return div.innerHTML;
+    }
+    document.getElementById("earnings").textContent = sanitize(sanitizedEarnings);
+  </script>
+</body>
+</html>

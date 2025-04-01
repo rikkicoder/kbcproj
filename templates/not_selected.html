@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Not Selected</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: url('{{ url_for("static", filename="loginpagebg.jpeg") }}') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      text-align: center;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      width: 90%;
+      max-width: 400px;
+      color: black;
+    }
+    a {
+      text-decoration: none;
+      color: #0056b3;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Not Selected</h2>
+    <p>You were not selected for the game. Please try again later.</p>
+    <a href="{{ url_for('index') }}">Back to Login</a>
+  </div>
+</body>
+</html>

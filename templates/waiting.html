@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Waiting Room</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: url('{{ url_for("static", filename="loginpagebg.jpeg") }}') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      text-align: center;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      width: 90%;
+      max-width: 400px;
+      color: black;
+    }
+    h2 { margin-bottom: 20px; }
+    p { font-size: 1.2em; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Waiting Room</h2>
+    <p>Please wait while the admin selects a player...</p>
+  </div>
+  
+  <script>
+    // Use the UID passed to the template for polling.
+    const currentUserUid = "{{ uid }}";
+
+    // Poll every 3 seconds to check if the game status has changed.
+    setInterval(function() {
+      fetch(`/check_game_status/${currentUserUid}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.status === 'accepted') {
+            window.location.href = `/game/${currentUserUid}`;
+          } else if (data.status === 'rejected') {
+            alert('You were not selected for the game. Redirecting to login.');
+            window.location.href = '/not_selected';
+          }
+        })
+        .catch(error => console.error('Error:', error));
+    }, 3000);
+
+    // Add this to waiting.html
+function checkStatus() {
+    const uid = '{{ uid }}';
+    fetch(`/check_game_status/${uid}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'accepted') {
+                window.location.href = `/game/${uid}`;
+            }
+        });
+}
+
+// Check every 2 seconds
+setInterval(checkStatus, 2000);
+
+  </script>
+</body>
+</html>

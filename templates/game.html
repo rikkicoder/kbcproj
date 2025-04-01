@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KBC++ Game </title>
+  <!-- Include Chart.js for audience poll pie chart -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* Reset & Base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, #8b15df, #1100ff); /* Blue-purple gradient */
+      color: #fff;
+      height: 100vh;
+      width: 100vw;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .game-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(13, 27, 42, 0.8);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      border: 2px solid gold; /* Gold border */
+    }
+    /* Lifelines Container */
+    .lifelines-container {
+      position: absolute;
+      left: 20px;
+      top: 200px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 10;
+    }
+    .lifeline {
+      width: 80px;
+      height: 80px;
+      background-color: #008000; /* Green fill */
+      border: 2px solid gold; /* Gold border */
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: #fff;
+      font-weight: bold;
+      text-shadow: 0 0 5px #008000;
+      cursor: pointer;
+    }
+    .lifeline:hover {
+      background-color: #00b300; /* Lighter green on hover */
+      box-shadow: 0 0 10px #00ff00;
+      transform: scale(1.05);
+    }
+    .lifeline.disabled {
+      opacity: 0.5;
+      pointer-events: none;
+      background-color: #004d00;
+    }
+    /* Timer Container */
+    .timer-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .timer {
+      background-color: #ecf80a;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 28px;
+      font-weight: bold;
+      color: #001f3f;
+      border: 2px solid gold; /* Gold border */
+    }
+    /* Main Content Container */
+    .content-container {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .center-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      margin-right: 50px;
+    }
+    .qa-container {
+      background-color: #4b0082; /* Purple fill */
+      padding: 20px;
+      border-radius: 15px;
+      width: 60vw;
+      height: 60vh;
+      margin: 40px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 0 15px #9370db;
+      border: 2px solid gold; /* Gold border */
+    }
+    .question-container {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    .question-container:hover{
+      background-color: #6a0dad; /* Darker purple on hover */
+      box-shadow: 0 0 20px #9370db;
+    }
+    .question-container:active {
+      transform: scale(0.98);
+      transition: transform 0.1s;
+    }
+    .question-box {
+      background-color: #4b0082; /* Purple fill */
+      padding: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      border-radius: 10px;
+      border: 2px solid gold; /* Gold border */
+      width: 100%;
+      text-align: center;
+      color: #fff;
+      text-shadow: 0 0 10px #9370db;
+    }
+    .options-container {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    .options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      width: 100%;
+    }
+    .option-btn {
+      background-color: #800080; /* Purple fill */
+      border: 2px solid gold; /* Gold border */
+      color: #fff;
+      font-size: 26px;
+      padding: 15px;
+      border-radius: 50px;
+      cursor: pointer;
+      text-align: center;
+      transition: 0.3s;
+      text-shadow: 0 0 5px #800080;
+      width: 100%;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .option-btn:hover {
+      background-color: #9932cc;
+      color: #fff;
+      transform :scale(1.05);
+      
+    }
+    .option-btn.disabled {
+      /* background-color: #555;
+      color: #999;
+      cursor: not-allowed; */
+      display:none;
+    }
+    .buttons-container {
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .confirm-button,
+    .exit-button {
+      font-size: 24px;
+      padding: 15px 30px;
+      border-radius: 5px;
+      cursor: pointer;
+      border: 2px solid gold; /* Gold border */
+    }
+    .confirm-button {
+      background-color: green;
+      color: #fff;
+      text-shadow: 0 0 5px green;
+    }
+    .exit-button {
+      background-color: red;
+      color: #fff;
+      text-shadow: 0 0 5px red;
+    }
+    .earnings-container {
+      margin-bottom: 20px;
+    }
+    .current-earnings {
+      background-color: #4b0082; /* Purple fill */
+      color: #fff;
+      font-size: 22px;
+      font-weight: bold;
+      padding: 10px;
+      border-radius: 5px;
+      width: 220px;
+      text-align: center;
+      text-shadow: 0 0 5px #4b0082;
+      border: 2px solid gold; /* Gold border */
+    }
+    .scoreboard-container {
+      background-color: #4b0082; /* Purple fill */
+      padding: 15px;
+      border-radius: 5px;
+      width: 220px;
+      text-align: left;
+      color: #fff;
+      font-weight: bold;
+      overflow-y: auto;
+      border: 2px solid gold; /* Gold border */
+      text-shadow: 0 0 5px #4b0082;
+      margin: 40px 0;
+    }
+    .score-item {
+      padding: 5px;
+      font-size: 18px;
+    }
+    .score-item.current {
+      background-color: gold;
+      color: #001f3f;
+    }
+    .score-item.completed {
+      background-color: #555;
+      color: #fff;
+    }
+    /* Modal Styles for Audience Poll */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 20;
+    }
+    .modal-content {
+      background: #4b0082; /* Purple fill */
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      position: relative;
+      border: 2px solid gold; /* Gold border */
+    }
+    .close-modal {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: red;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      border: 2px solid gold; /* Gold border */
+    }
+    .pause-button {
+  background-color: #008000;
+  color: #fff;
+  font-size: 24px;
+  padding: 15px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 2px solid gold;
+  margin-left: 10px;
+}
+
+.pause-button:hover {
+  background-color: #006400;
+}
+
+</style>
+
+</head>
+<body>
+  <div class="game-container">
+    <!-- Lifelines Container -->
+    <div class="lifelines-container">
+      <div class="lifeline" id="lifeline-5050" onclick="useFiftyFifty()">50:50</div>
+      <div class="lifeline" id="lifeline-poll" onclick="usePoll()">Poll</div>
+      <div class="lifeline" id="lifeline-swap" onclick="useSwap()">Swap</div>
+    </div>
+    <!-- Main Content Container -->
+    <div class="content-container">
+      <!-- Center Container: Timer, QA, and Buttons -->
+      <div class="center-container">
+        <div class="timer-container">
+          <div class="timer" id="timer">60</div>
+        </div>
+        <div class="qa-container">
+          <div class="question-container">
+            <div class="question-box" id="question-box">
+              In the film 'Mr India', Mogambo was looking for a formula to enable what?
+            </div>
+          </div>
+          <div class="options-container">
+            <div class="options">
+              <button class="option-btn" onclick="selectOption(this)">A: Immortality</button>
+              <button class="option-btn" onclick="selectOption(this)">B: Inanimation</button>
+              <button class="option-btn" onclick="selectOption(this)">C: Invisibility</button>
+              <button class="option-btn" onclick="selectOption(this)">D: Intelligence</button>
+            </div>
+          </div>
+        </div>
+        <div class="buttons-container">
+          <button class="confirm-button" onclick="confirmAnswer()">Confirm Answer</button>
+          <button class="exit-button" onclick="exitGame()">EXIT</button>
+          <button class="pause-button" onclick = "pauseTimer()">PAUSE</button> 
+        </div>
+      </div>
+      <!-- Right Container: Scoreboard and Earnings -->
+      <div class="right-container">
+        <div class="scoreboard-container" id="scoreboard">
+          <div class="score-item" data-index="14">15 - 7 Crore</div>
+          <div class="score-item" data-index="13">14 - 5 Crore</div>
+          <div class="score-item" data-index="12">13 - 3 Crore</div>
+          <div class="score-item" data-index="11">12 - 1 Crore</div>
+          <div class="score-item" data-index="10">11 - ₹50,00,000</div>
+          <div class="score-item" data-index="9">10 - ₹25,00,000</div>
+          <div class="score-item" data-index="8">9 - ₹12,50,000</div>
+          <div class="score-item" data-index="7">8 - ₹6,40,000</div>
+          <div class="score-item" data-index="6">7 - ₹3,20,000</div>
+          <div class="score-item" data-index="5">6 - ₹1,60,000</div>
+          <div class="score-item" data-index="4">5 - ₹80,000</div>
+          <div class="score-item" data-index="3">4 - ₹40,000</div>
+          <div class="score-item" data-index="2">3 - ₹20,000</div>
+          <div class="score-item" data-index="1">2 - ₹10,000</div>
+          <div class="score-item" data-index="0">1 - ₹5,000</div>
+        </div>
+        <div class="earnings-container">
+          <div class="current-earnings" id="earnings">
+            Current Earnings: ₹0
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal for Audience Poll -->
+  <div id="pollModal" class="modal" style="display:none;">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closePoll()">Close</button>
+      <canvas id="pollChart" width="300" height="300"></canvas>
+    </div>
+  </div>
+
+  <script>
+    // Pass the uid from Flask template
+    var uid = "{{ uid }}";
+    var questions = [];
+    var currentQuestionIndex = 0;
+    var askedQuestionIds = []; // store asked question ids
+    var lifelinesUsed = { fiftyFifty: false, swap: false, poll: false };
+    // Earnings values per question (index 0 for Q1, etc.)
+    var earningsValues = [5000, 10000, 20000, 40000, 80000, 160000, 320000, 640000, 1250000, 2500000, 5000000, 10000000, 30000000, 50000000, 70000000];
+    var currentEarnings = 0;
+    var timerInterval;
+    var timeLeft = 60;
+    var selectedOption = null;
+    var isPaused = false;
+    
+    window.onload = function() {
+      fetch('/get_questions/' + uid)
+        .then(response => response.json())
+        .then(data => {
+          if (data.error) {
+            alert(data.error);
+            return;
+          }
+          questions = data.questions;
+          loadQuestion();
+        });
+    };
+
+    //Timer functions
+    function startTimer() {
+      timeLeft = 60;
+      document.getElementById('timer').textContent = timeLeft;
+      timerInterval = setInterval(function() {
+        timeLeft--;
+        document.getElementById('timer').textContent = timeLeft;
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          alert('Time up!');
+          markWrongAndExit();
+        }
+      }, 1000);
+    }
+    function updateTimer() {
+  if (!isPaused) {
+    timeleft--;
+    if (timeleft <= 0) {
+      clearInterval(timerInterval);
+      // Handle timer expiration
+    }
+    document.querySelector('.timer').textContent = timeleft;
+  }
+}
+
+// function startTimer() {
+//   timerInterval = setInterval(updateTimer, 1000);
+// }
+
+function pauseTimer() {
+  isPaused = !isPaused;
+  document.querySelector('.pause-button').textContent = isPaused ? 'RESUME' : 'PAUSE';
+}
+
+document.querySelector('.pause-button').addEventListener('click', pauseTimer);
+
+// Start the timer when the game begins
+startTimer();
+
+    // Load a question and update scoreboard styling
+    function loadQuestion() {
+      if (currentQuestionIndex >= questions.length) {
+        // All questions answered correctly!
+        redirectExit("congrats you are a crorepathi", currentEarnings);
+        return;
+      }
+      // Clear previous timer and start new one
+      clearInterval(timerInterval);
+      startTimer();
+
+      var currentQ = questions[currentQuestionIndex];
+      askedQuestionIds.push(currentQ.id);
+      document.getElementById('question-box').textContent = currentQ.question;
+
+      // Update scoreboard: mark completed as grey and current as yellow
+      var scoreItems = document.querySelectorAll('.score-item');
+      scoreItems.forEach(function(item) {
+        var idx = parseInt(item.getAttribute('data-index'));
+        if (idx < currentQuestionIndex) {
+          item.classList.add('completed');
+          item.classList.remove('current');
+        } else if (idx === currentQuestionIndex) {
+          item.classList.add('current');
+          item.classList.remove('completed');
+        } else {
+          item.classList.remove('current','completed');
+        }
+      });
+
+      // Prepare options (assumes exactly 4 options)
+      var options = currentQ.incorrect_answers;
+      try {
+        if (typeof options === "string") {
+          options = JSON.parse(options);
+        }
+      } catch(e) { }
+      options.push(currentQ.correct_answer);
+      options = shuffleArray(options);
+
+      // Set option buttons
+      var optionButtons = document.querySelectorAll('.option-btn');
+      optionButtons.forEach((btn, index) => {
+        btn.textContent = options[index];
+        btn.style.backgroundColor = '#0d1b2a';
+        btn.style.color = '#00bfff';
+        btn.disabled = false;
+        btn.classList.remove('disabled');
+      });
+      selectedOption = null;
+    }
+
+    // Shuffle helper
+    function shuffleArray(array) {
+      for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    // Option selection handler
+    function selectOption(button) {
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        btn.style.backgroundColor = '#0d1b2a';
+        btn.style.color = '#00bfff';
+      });
+      button.style.backgroundColor = '#00eaff';
+      button.style.color = '#001f3f';
+      selectedOption = button;
+    }
+
+    // Confirm answer with blinking effect then check answer
+    function confirmAnswer() {
+      if (!selectedOption) {
+        alert('Please select an option.');
+        return;
+      }
+      clearInterval(timerInterval);
+      document.querySelectorAll('.option-btn').forEach(btn => btn.disabled = true);
+      var blinkCount = 0;
+      var originalBg = selectedOption.style.backgroundColor;
+      var blinkInterval = setInterval(function() {
+        selectedOption.style.backgroundColor = (blinkCount % 2 === 0) ? 'yellow' : originalBg;
+        blinkCount++;
+        if (blinkCount === 6) {
+          clearInterval(blinkInterval);
+          checkAnswer();
+        }
+      }, 500);
+    }
+
+    // Check answer by contacting backend
+    function checkAnswer() {
+      var currentQ = questions[currentQuestionIndex];
+      fetch('/submit_answer', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question_id: currentQ.id, selected_answer: selectedOption.textContent })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.correct) {
+          // Correct: highlight selected in green and update earnings
+          selectedOption.style.backgroundColor = 'green';
+          currentEarnings = earningsValues[currentQuestionIndex];
+          document.getElementById('earnings').textContent = 'Current Earnings: ₹' + currentEarnings;
+          setTimeout(loadNextQuestion, 1000);
+        } else {
+          // Wrong: highlight chosen option red and correct option green
+          selectedOption.style.backgroundColor = 'red';
+          highlightCorrectAnswer(currentQ.correct_answer);
+          setTimeout(function() {
+            redirectExit("Wrong answer! You lost.", currentEarnings);
+          }, 1500);
+        }
+      });
+    }
+
+    function highlightCorrectAnswer(correctAnswer) {
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        if (btn.textContent.trim().toLowerCase() === correctAnswer.trim().toLowerCase()) {
+          btn.style.backgroundColor = 'green';
+        }
+      });
+    }
+
+    // Load next question
+    function loadNextQuestion() {
+      currentQuestionIndex++;
+      loadQuestion();
+    }
+
+    // Exit game when exit button is clicked or when time is up
+    function exitGame() {
+      redirectExit("You exited the game.", currentEarnings);
+    }
+    function markWrongAndExit() {
+      // When time runs out, mark answer as wrong and exit
+      alert("Time's up! Wrong answer.");
+      redirectExit("Wrong answer! You lost.", currentEarnings);
+    }
+    // Redirect to exit page with parameters
+    function redirectExit(message, earnings) {
+      window.location.href = '/exit?result=' + encodeURIComponent(message) + '&earnings=' +  currentEarnings;
+    }
+
+    // Lifeline: 50-50 implementation
+
+    function useFiftyFifty() {
+      if (lifelinesUsed.fiftyFifty) return;
+      lifelinesUsed.fiftyFifty = true;
+      document.getElementById('lifeline-5050').classList.add('disabled');
+
+      var currentQ = questions[currentQuestionIndex];
+      var correct = currentQ.correct_answer.trim().toLowerCase();
+      var wrongBtns = [];
+      document.querySelectorAll('.option-btn').forEach(btn => {
+        if (btn.textContent.trim().toLowerCase() !== correct) {
+          wrongBtns.push(btn);
+        }
+      });
+  // Randomly disable two wrong options
+  wrongBtns = shuffleArray(wrongBtns);
+  wrongBtns.slice(0,2).forEach(btn => {
+    btn.disabled = true;
+    btn.classList.add('disabled');
+  });
+}
+
+
+    // Lifeline: Swap question implementation
+    function useSwap() {
+      if (lifelinesUsed.swap) return;
+      lifelinesUsed.swap = true;
+      document.getElementById('lifeline-swap').classList.add('disabled');
+      
+      var currentQ = questions[currentQuestionIndex];
+      var currentDiff = currentQ.difficulty;
+      // Find a question from the pool with the same difficulty that hasn't been asked
+      var swapCandidate = null;
+      for (var i = currentQuestionIndex+1; i < questions.length; i++) {
+        if (questions[i].difficulty === currentDiff && !askedQuestionIds.includes(questions[i].id)) {
+          swapCandidate = questions[i];
+          break;
+        }
+      }
+      if (swapCandidate) {
+        questions[currentQuestionIndex] = swapCandidate;
+        loadQuestion();
+      } else {
+        alert("No swap question available!");
+      }
+    }
+
+    // Lifeline: Audience Poll implementation using Chart.js
+    function usePoll() {
+      if (lifelinesUsed.poll) return;
+      lifelinesUsed.poll = true;
+      document.getElementById('lifeline-poll').classList.add('disabled');
+      
+      var currentQ = questions[currentQuestionIndex];
+      var correct = currentQ.correct_answer.trim().toLowerCase();
+      var optionButtons = document.querySelectorAll('.option-btn');
+      var percentages = [];
+      // Generate four random numbers
+      var nums = [];
+      for (var i = 0; i < 4; i++) {
+        nums.push(Math.random());
+      }
+      var sum = nums.reduce((a,b)=>a+b,0);
+      percentages = nums.map(n => Math.round((n/sum)*100));
+      // Adjust so that the option corresponding to the correct answer gets the highest percentage
+      var maxVal = Math.max(...percentages);
+      var correctIndex = -1;
+      optionButtons.forEach((btn, i) => {
+        if (btn.textContent.trim().toLowerCase() === correct) {
+          correctIndex = i;
+        }
+      });
+      // If not highest, swap with the current highest percentage
+      var currentCorrectVal = percentages[correctIndex];
+      var highestIndex = percentages.indexOf(maxVal);
+      if (correctIndex !== highestIndex) {
+        percentages[correctIndex] = maxVal;
+        percentages[highestIndex] = currentCorrectVal;
+      }
+      // Ensure total sums to 100 (adjust last value if necessary)
+      var total = percentages.reduce((a,b)=>a+b,0);
+      if(total !== 100) {
+        percentages[percentages.length-1] += 100 - total;
+      }
+      // Show modal with pie chart
+      showPollModal(optionButtons, percentages);
+    }
+    
+    function showPollModal(optionButtons, percentages) {
+      var labels = [];
+      optionButtons.forEach(btn => {
+        labels.push(btn.textContent);
+      });
+      var ctx = document.getElementById('pollChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'pie',
+        data: {
+          labels: labels,
+          datasets: [{
+            data: percentages,
+            backgroundColor: ['#00eaff','#00bfff','#007acc','#005fa3']
+          }]
+        },
+        options: {
+          responsive: false,
+          plugins: {
+            legend: { position: 'bottom' }
+          }
+        }
+      });
+      document.getElementById('pollModal').style.display = 'flex';
+    }
+    
+    function closePoll() {
+      document.getElementById('pollModal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>

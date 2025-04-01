@@ -1,0 +1,15 @@
+body {
+    background: linear-gradient(135deg, #4b6cb7 0%, #8a2be2 100%);
+    color: white;
+}
+
+button, 
+.money-level, 
+#question-container, 
+#options-container label,
+.lifeline-btn {
+    border: 2px solid gold;
+    box-shadow: 0 0 10px gold;
+}
+
+/* Keep any existing styles below this line */
